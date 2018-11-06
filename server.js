@@ -32,6 +32,15 @@ hbs.registerHelper('screamIt', (text) => {
 });
 
 app.get('/', (req, res) => {
+    res.render('home.hbs', {
+        pageTitle: 'Home Page',
+        welcomeMessage: 'Hello world',
+        currentYear: new Date().getFullYear()
+    });
+
+})
+
+app.get('/json', (req, res) => {
     // res.send('<h1>Hello express!</h1>');
     res.send({
         name: 'Gregor',
@@ -42,26 +51,23 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/home', (req, res) => {
-    res.render('home.hbs', {
-        pageTitle: 'Home Page',
-        welcomeMessage: 'Hello world',
-        currentYear: new Date().getFullYear()
+app.get('/about', (req, res) => {
+    res.render('about.hbs', {
+        pageTitle: 'About Page'
     });
 
 })
 
-app.get('/about', (req, res) => {
-    res.render('about.hbs', {
-        pageTitle: 'About Page',
-        currentYear: new Date().getFullYear()
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page'
     });
 
 })
 
 app.get('/bad', (req, res) => {
     res.send({
-        errorMessage: 'Error message',
+        errorMessage: 'Error message'
     })
 
 })
